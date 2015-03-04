@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int growth_cycle(int cycle, int init)
+    {
+     int i = 0 ;
+     int j = init;
+     
+    for(i = 1 ; i <= cycle ; i++)
+        {
+           if(i%2 == 1)
+               {
+               j = j *2;
+               }
+            else 
+                j = j+1;
+        }
+    return j ;
+    }
+
+int main() {
+
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    int no_of_cycles;
+    int a[10]; // maximum no of cycles 
+    int looper ;
+    
+    scanf("%d",&no_of_cycles);
+    
+    for(looper = 0 ;looper <no_of_cycles ; looper++ )
+    scanf("%d",&a[looper]);
+    
+    for(looper = 0 ;looper <no_of_cycles; looper++ )
+    printf("%d\n",growth_cycle(a[looper],1));
+    
+    return 0;
+}
