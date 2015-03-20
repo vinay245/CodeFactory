@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+
+    int no_of_iter;
+    int i =0;
+    long int value;
+    long int rem;
+    
+    scanf("%d",&no_of_iter);
+ 
+    for(i=0;i<no_of_iter;i++)
+        {
+        scanf("%ld",&value);
+        rem = value/2;
+        printf("%ld\n",rem*(value-rem));
+        }
+    
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+    
+}
