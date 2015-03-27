@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+void quicksort(int x[10],int first,int last){
+    int pivot,j,temp,i;
+
+     if(first<last){
+         pivot=first;
+         i=first;
+         j=last;
+
+         while(i<j){
+             while(x[i]<=x[pivot]&&i<last)
+                 i++;
+             while(x[j]>x[pivot])
+                 j--;
+             if(i<j){
+                 temp=x[i];
+                  x[i]=x[j];
+                  x[j]=temp;
+             }
+         }
+
+         temp=x[pivot];
+         x[pivot]=x[j];
+         x[j]=temp;
+         quicksort(x,first,j-1);
+         quicksort(x,j+1,last);
+
+    }
+}
+
+int main() {
+    int a[1000];
+    int no_of_elements;
+    int i=0;
+    int j=0;
+    int avail_ele = 0;
+    int count =0;
+    int sub =0;
+    
+    scanf("%d",&no_of_elements);
+    
+    for(i=0;i<no_of_elements;i++)
+        scanf("%d",&a[i]);
+    //find a min
+    //sub from the array till i 
+    //print the number that can be cut next time 
+    //subtract i with 0 return cuts 
+    //repeat the same till
+    
+    //sort the array
+    avail_ele = no_of_elements;
+    printf("%d\n",no_of_elements);
+    quicksort(a,0,no_of_elements-1);
+   /* for(i=0;i<no_of_elements;i++)
+    printf("%d",a[i]);
+    
+    return 0;*/ 
+    
+    i=0;
+    
+    while(avail_ele>1)
+        {
+        count = 0;
+        sub = a[i];
+        for(j=i;j<no_of_elements;j++)
+            {
+            a[j] = a[j]-sub;
+            if(a[j]==0)
+                count++;
+            }
+        avail_ele = avail_ele-count;
+        
+        if(avail_ele)
+        printf("%d\n",avail_ele);    
+        i = i+count;
+        }
+    
+    
+    
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+}
