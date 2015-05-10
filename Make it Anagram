@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+char a[10000];
+char b[10000];
+
+int strlena =0;
+int strlenb =0;
+
+    int common_count =0;
+    
+int target[26];
+int i;
+    
+    scanf("%s",&a);
+    scanf("%s",&b);
+    
+	
+    for(i=0;i<25;i++)
+        target[i] =0;
+    
+    // to find common things between the two 
+    
+    i=0;
+
+    while(a[i]!='\0')
+        {
+        target[a[i]-'a']++;
+        i++;
+        }
+	 strlena=i;
+    i=0;
+    
+    while(b[i]!='\0')
+          {
+            if(target[b[i]-'a']) //the below can be sorted further for reducing the no of comparisions
+                {
+                common_count++;target[b[i]-'a']--;
+            }
+              i++;
+          }
+          strlenb=i;
+          
+          printf("%d",strlena-common_count+strlenb-common_count);
+          
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+}
